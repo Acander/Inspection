@@ -22,5 +22,11 @@ public class SystemHandler {
 		databaseManager = new DatabaseManager();
 		date = new Date();
 	}
+	
+	public void inviteCustomer()
+	{
+		garage.openDoor();
+		display.
+	}
 
 }

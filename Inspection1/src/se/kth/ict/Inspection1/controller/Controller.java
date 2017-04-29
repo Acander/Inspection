@@ -10,9 +10,9 @@ public class Controller {
 		systemHandler = new SystemHandler();
 	}
 	
-	public void newInspection()
+	public void specifyThatAnewInspectionIsAboutToTakePlace()
 	{
-		
+		inviteCustomer();
 	}
 
 }

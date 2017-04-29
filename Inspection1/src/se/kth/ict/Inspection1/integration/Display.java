@@ -1,18 +1,33 @@
 package se.kth.ict.Inspection1.integration;
 
-public class Display {
-	private int CurrentNumber = 0;
+/**
+ * This class represents the external Display systems which is visible for
+ * the customers waiting outside the garage
+ * @author Adrian
+ *
+ */
+
+class Display {
+	private int currentNumber = 0;
 	/**
 	 * Creates a a display controller
 	 */
 	
 	public Display(){}
 	
+	/**
+	 * Displays the current cue number for the customers to see
+	 */
+	
 	public void displayCurrentCustomerServiceNumber()
 	{
-		System.out.
+		System.out.println(currentNumber);
+		incrementCurrentNumberForNextCustomer();
 	}
 	
-	private void 
+	private void incrementCurrentNumberForNextCustomer()
+	{
+		currentNumber++;
+	}
 
 }

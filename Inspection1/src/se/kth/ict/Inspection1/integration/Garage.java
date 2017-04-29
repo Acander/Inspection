@@ -7,7 +7,7 @@ package se.kth.ict.Inspection1.integration;
  *
  */
 
-public class Garage {
+class Garage {
 	private boolean doorOpen = false;
 	/**
 	 * Creates a controller for the external Garage system.

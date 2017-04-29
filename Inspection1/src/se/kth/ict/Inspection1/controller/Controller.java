@@ -1,6 +1,7 @@
 package se.kth.ict.Inspection1.controller;
 
 import se.kth.ict.Inspection1.integration.SystemHandler;
+import se.kth.ict.Inspection1.integration.InspectionCheckList;
 import se.kth.ict.Inspection1.model.*;
 
 public class Controller {
@@ -25,7 +26,7 @@ public class Controller {
 		systemHandler.closingDoor();
 	}
 	
-	/**Asks the system to calculate the cost for the inspection and to Specify what
+	/**Asks the system to calculate the cost for the inspection and to specify what
 	 * is to be inspected
 	 * 
 	 * @param registrationNumber
@@ -34,8 +35,8 @@ public class Controller {
 	
 	public void enterRegNumberToProduceCostAndInspectionList(String regNum)
 	{
-		Vehicle vehicleToInspect = new Vehicle();
-		InspectionCheckList whatToInspectOnVehicle = produceInspectionList(regNum);
-		
+		Vehicle vehicleToInspect = new Vehicle(regNum);
+		InspectionCheckList whatToInspectOnVehicle = systemHandler.produceInspectionList();
+		Inspection specifiedInspectionToBeMade = new Inspection(vehicleToInspect, whatToInspectOnVehicle);
 	}
 }

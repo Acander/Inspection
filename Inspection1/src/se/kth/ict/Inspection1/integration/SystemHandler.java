@@ -43,12 +43,11 @@ public class SystemHandler {
 		garage.closeDoor();
 	}
 /**
- * Produces a checkList based on the registration number of the car
- * @param regNum
- * @return
+ * Produces a checkList for the inspection
+ * @return an object of the type InspectionCheckList 
  */
-	public InspectionCheckList produceInspectionList(String regNum)
+	public InspectionCheckList produceInspectionList()
 	{
-		return findInspectionsByRegNum(regNum);
+		return databaseManager.findInspections();
 	}
 }

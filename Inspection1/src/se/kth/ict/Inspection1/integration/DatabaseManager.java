@@ -19,9 +19,9 @@ class DatabaseManager {
 		
 	}
 	
-	public InspectionCheckList findInspectionsByRegNum(String regNum)
+	public InspectionCheckList findInspections()
 	{
-		
+		return new InspectionCheckList();
 	}
 
 }

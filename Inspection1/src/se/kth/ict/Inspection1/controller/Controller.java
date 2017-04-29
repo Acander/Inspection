@@ -2,11 +2,23 @@ package se.kth.ict.Inspection1.controller;
 
 import se.kth.ict.Inspection1.integration.SystemHandler;
 import se.kth.ict.Inspection1.integration.InspectionCheckList;
-import se.kth.ict.Inspection1.model.*;
+import se.kth.ict.Inspection1.model.Amount;
+import se.kth.ict.Inspection1.model.Inspection;
+import se.kth.ict.Inspection1.model.Vehicle;
+import se.kth.ict.Inspection1.model.CashPayment;
+
+/**
+ * There is only one real Controller in the program.
+ * Every operation in the program has its root 
+ * here.
+ * @author Adrian
+ *
+ */
 
 public class Controller {
 	private SystemHandler systemHandler;
-	private Amount paymentForInspections;
+	public Inspection specifiedInspectionToBeMade;
+	public Amount costForInspection;
 	
 	public Controller()
 	{
@@ -33,10 +45,18 @@ public class Controller {
 	 * @return the cost for the inspection 
 	 */
 	
-	public void enterRegNumberToProduceCostAndInspectionList(String regNum)
+	public double enterRegNumberToProduceCostAndInspectionList(String regNum)
 	{
 		Vehicle vehicleToInspect = new Vehicle(regNum);
 		InspectionCheckList whatToInspectOnVehicle = systemHandler.produceInspectionList();
-		Inspection specifiedInspectionToBeMade = new Inspection(vehicleToInspect, whatToInspectOnVehicle);
+		specifiedInspectionToBeMade = new Inspection(vehicleToInspect, whatToInspectOnVehicle);
+		costForInspection = new Amount();
+		return costForInspection.getCost();
+	}
+	
+	public double registerAmountOfCashPaid(double amountPaid)
+	{
+		CashPayment cashPayment = new CashPayment(costForInspection.getCost(), amountPaid);
+		return cashPayment.getChange();
 	}
 }

@@ -7,7 +7,7 @@ package se.kth.ict.Inspection1.integration;
  *
  */
 
-public class DatabaseManager {
+class DatabaseManager {
 	private InspectionCheckList checkList;
 	
 	/**
@@ -16,7 +16,12 @@ public class DatabaseManager {
 	
 	public DatabaseManager()
 	{
-		checkList = new InspectionCheckList();
+		
+	}
+	
+	public InspectionCheckList findInspectionsByRegNum(String regNum)
+	{
+		
 	}
 
 }

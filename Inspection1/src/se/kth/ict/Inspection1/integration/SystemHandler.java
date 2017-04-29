@@ -49,6 +49,6 @@ public class SystemHandler {
  */
 	public InspectionCheckList produceInspectionList(String regNum)
 	{
-		return findInspectionsByRegNum(regNum)
+		return findInspectionsByRegNum(regNum);
 	}
 }

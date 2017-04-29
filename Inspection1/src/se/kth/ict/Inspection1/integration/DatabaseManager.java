@@ -7,16 +7,16 @@ package se.kth.ict.Inspection1.integration;
  *
  */
 
-public class DatabaseManger {
-	private InspectionCheckList checkList
+public class DatabaseManager {
+	private InspectionCheckList checkList;
 	
 	/**
 	 * Creates a DatabaseManger
 	 */
 	
-	public DatabaseManger(InspectionCheckList checkList)
+	public DatabaseManager()
 	{
-		this.checkList = checkList;
+		checkList = new InspectionCheckList();
 	}
 
 }

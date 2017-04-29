@@ -54,9 +54,20 @@ public class Controller {
 		return costForInspection.getCost();
 	}
 	
+	/**
+	 * Registers amount paid by the customer and instructs the printer to print out a receipt
+	 * to the customer
+	 * @param amountPaid
+	 * @return the amount of change that should be given back
+	 */
+	
 	public double registerAmountOfCashPaid(double amountPaid)
 	{
 		CashPayment cashPayment = new CashPayment(costForInspection.getCost(), amountPaid);
+		
+		systemHandler.timeToPrintReceipt();
 		return cashPayment.getChange();
 	}
+	
+	private Receipt createReceipt()
 }

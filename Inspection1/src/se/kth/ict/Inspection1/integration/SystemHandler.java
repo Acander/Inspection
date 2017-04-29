@@ -1,5 +1,7 @@
 package se.kth.ict.Inspection1.integration;
 
+import se.kth.ict.Inspection1.model.Receipt;
+
 public class SystemHandler {
 	private Garage garage;
 	private Display display;
@@ -49,5 +51,15 @@ public class SystemHandler {
 	public InspectionCheckList produceInspectionList()
 	{
 		return databaseManager.findInspections();
+	}
+	
+	/**
+	 * Orders the printer to print out the receipt
+	 * @param receipt
+	 */
+	
+	public void timeToPrintReceipt(Receipt receipt)
+	{
+		printer.printReceipt(receipt);
 	}
 }

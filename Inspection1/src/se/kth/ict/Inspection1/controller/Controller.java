@@ -6,6 +6,8 @@ import se.kth.ict.Inspection1.model.Amount;
 import se.kth.ict.Inspection1.model.Inspection;
 import se.kth.ict.Inspection1.model.Vehicle;
 import se.kth.ict.Inspection1.model.CashPayment;
+import se.kth.ict.Inspection1.model.Receipt;
+import se.kth.ict.Inspection1.integration.CreditCard;
 
 /**
  * There is only one real Controller in the program.
@@ -64,10 +66,23 @@ public class Controller {
 	public double registerAmountOfCashPaid(double amountPaid)
 	{
 		CashPayment cashPayment = new CashPayment(costForInspection.getCost(), amountPaid);
-		
-		systemHandler.timeToPrintReceipt();
+		Receipt receipt = new Receipt(amountPaid, costForInspection.getCost(), cashPayment.getChange());
+		systemHandler.timeToPrintReceipt(receipt);
 		return cashPayment.getChange();
 	}
 	
-	private Receipt createReceipt()
+	/**
+	 * This method is used in the event of a credit card payment. 
+	*/
+	public void enterCreditCardInforMation(CreditCard creditCard)
+	{
+		double costForTheInspection = costForInspection.getCost();
+		if(systemHandler.payByCard(creditCard, costForTheInspection))
+		{
+			Receipt receipt = new Receipt(costForTheInspection, costForTheInspection, creditCard);
+			systemHandler.timeToPrintReceipt(receipt);
+			
+		}
+	}
+	
 }

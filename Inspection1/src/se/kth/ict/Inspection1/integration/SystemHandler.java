@@ -62,4 +62,10 @@ public class SystemHandler {
 	{
 		printer.printReceipt(receipt);
 	}
+	
+	public boolean payByCard(CreditCard creditCard, double costForInspection)
+	{
+		PaymentAuthorization paymentAuthorization = new PaymentAuthorization();
+		return paymentAuthorization.authorizPayment(creditCard, costForInspection);
+	}
 }

@@ -1,9 +1,11 @@
 package se.kth.ict.Inspection1.model;
 
 import se.kth.ict.Inspection1.integration.SystemHandler;
+import se.kth.ict.Inspection1.integration.CreditCard;
 /**
  * The purpose of the receipt is to give the customer a view
- * of the transactions and calculations that has been performed
+ * of the transactions and calculations that has been performed.
+ * Works as DTO for later use by the printer
  * @author Adrian
  *
  */
@@ -12,9 +14,10 @@ public class Receipt {
 	private double amountPaid;
 	private double inspectionCost;
 	private double change;
+	private CreditCard creditCard; 
 	
 	/**
-	 * Creates a new Receipt for printout
+	 * Creates a new Receipt for later printout in the event of a cash payment
 	 * @param amountPaid
 	 * @param inspectionCost
 	 * @param change
@@ -28,8 +31,19 @@ public class Receipt {
 	}
 	
 	/**
-	 * Instructs the SystemHandler to print out the created receipt
+	 * Creates a new Receipt for later printout in the event of a credit card payment
+	 * @param amountPaid
+	 * @param inspectionCost
+	 * @param change
+	 * @param creditCard
 	 */
+	
+	public Receipt(double amountPaid, double inspectionCost, CreditCard creditCard)
+	{
+		this.amountPaid = amountPaid;
+		this.inspectionCost = inspectionCost;
+		this.creditCard = creditCard;
+	}
 	
 	public double getAmountPaid()
 	{
@@ -44,6 +58,11 @@ public class Receipt {
 	public double getChange()
 	{
 		return change;
+	}
+	
+	public CreditCard getCreditCard()
+	{
+		return creditCard;
 	}
 
 }

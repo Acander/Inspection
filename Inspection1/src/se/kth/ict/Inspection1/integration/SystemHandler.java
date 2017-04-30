@@ -24,7 +24,6 @@ public class SystemHandler {
 		display = new Display();
 		printer = new Printer();
 		databaseManager = new DatabaseManager();
-		date = new Date();
 	}
 	
 	/**
@@ -32,19 +31,29 @@ public class SystemHandler {
 	 * the garage system to open the door
 	 * and telling the display system to display the current number
 	 */
-	public void inviteCustomer()
+	public void inviteCustomer(int day, int month)
 	{
 		garage.openDoor();
 		display.displayCurrentCustomerServiceNumber();
+		date = new Date(day, month);
 	}
 	
 	/**
-	 * Instructs the Garage system to close the door
+	 * Instructs the Garage system to close the door.
 	 */
 	
 	public void closingDoor()
 	{
 		garage.closeDoor();
+	}
+	
+	/**
+	 * Instructs the Garage system to close the door.
+	 */
+	
+	public void openingDoor()
+	{
+		garage.openDoor();
 	}
 /**
  * Produces a checkList for the inspection
@@ -65,6 +74,11 @@ public class SystemHandler {
 		printer.printReceipt(receipt);
 	}
 	
+	/**
+	 * Orders the printer to print out the results from the exception
+	 * @param results
+	 */
+	
 	public void timeToPrintResults(Results results)
 	{
 		printer.printResults(results);
@@ -81,5 +95,15 @@ public class SystemHandler {
 	{
 		PaymentAuthorization paymentAuthorization = new PaymentAuthorization();
 		return paymentAuthorization.authorizPayment(creditCard, costForInspection);
+	}
+	
+	/**
+	 * The is used in the receipt so therefore this method is neccesery.
+	 * @return date
+	 */
+	
+	public Date getDate()
+	{
+		return date;
 	}
 }

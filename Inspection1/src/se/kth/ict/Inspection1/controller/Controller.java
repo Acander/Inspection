@@ -9,6 +9,7 @@ import se.kth.ict.Inspection1.model.CashPayment;
 import se.kth.ict.Inspection1.model.Receipt;
 import se.kth.ict.Inspection1.integration.CreditCard;
 import se.kth.ict.Inspection1.model.Results;
+import se.kth.ict.Inspection1.integration.Date;
 
 /**
  * There is only one real Controller in the program.
@@ -24,14 +25,22 @@ public class Controller {
 	public Amount costForInspection;
 	public Results inspectionResults;
 	
+	/**
+	 * Creates a Controller unit with an associated system handler for the inrtegration layer.
+	 */
+	
 	public Controller()
 	{
 		systemHandler = new SystemHandler();
 	}
 	
-	public void specifyThatAnewInspectionIsAboutToTakePlace()
+	/**
+	 * Informs the system handler that an inspection is about to take place
+	 */
+	
+	public void specifyThatAnewInspectionIsAboutToTakePlace(int day, int month)
 	{
-		systemHandler.inviteCustomer();
+		systemHandler.inviteCustomer(day, month);
 	}
 
 	/**
@@ -40,6 +49,15 @@ public class Controller {
 	public void closeGarageDoor()
 	{
 		systemHandler.closingDoor();
+	}
+	
+	/**
+	 * Instructs the system handler to open the garage door.
+	 */
+	
+	public void openGarageDoor()
+	{
+		systemHandler.openingDoor();
 	}
 	
 	/**Asks the system to calculate the cost for the inspection and to specify what
@@ -68,7 +86,7 @@ public class Controller {
 	public double registerAmountOfCashPaid(double amountPaid)
 	{
 		CashPayment cashPayment = new CashPayment(costForInspection.getCost(), amountPaid);
-		Receipt receipt = new Receipt(amountPaid, costForInspection.getCost(), cashPayment.getChange());
+		Receipt receipt = new Receipt(amountPaid, costForInspection.getCost(), cashPayment.getChange(), systemHandler.getDate());
 		systemHandler.timeToPrintReceipt(receipt);
 		return cashPayment.getChange();
 	}
@@ -83,11 +101,17 @@ public class Controller {
 		double costForTheInspection = costForInspection.getCost();
 		if(systemHandler.payByCard(creditCard, costForTheInspection))
 		{
-			Receipt receipt = new Receipt(costForTheInspection, costForTheInspection, creditCard);
+			Receipt receipt = new Receipt(costForTheInspection, costForTheInspection, creditCard, systemHandler.getDate());
 			systemHandler.timeToPrintReceipt(receipt);
 			
 		}
 	}
+	
+	/**
+	 * Method that creates a result list and also returns and 
+	 * returns a previously created inspection checklist.
+	 * @return
+	 */
 	
 	public InspectionCheckList specifyWhatToInspect()
 	{
@@ -95,10 +119,20 @@ public class Controller {
 		return specifiedInspectionToBeMade.getInspectionCheckList();
 	}
 	
+	/**
+	 * enterResutl is used for entering a specifc result from the inspection
+	 * @param result
+	 */
+	
 	public void enterResult(boolean result)
 	{
 		inspectionResults.storeResult(result);
 	}
+	
+	/**
+	 * Instructs the system handler to print out the now filled result list
+	 * @param results
+	 */
 	
 	public void printResults(Results results)
 	{

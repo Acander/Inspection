@@ -21,6 +21,10 @@ public class Printer {
 		System.out.println(formulatedPrintoutForReceipt(receipt));
 	}
 	
+	/**
+	 * Prints out the results to the console.
+	 */
+	
 	public void printResults(Results results)
 	{
 		System.out.println(formulatedPrintoutForResults(results));
@@ -49,26 +53,45 @@ public class Printer {
 		printout.append("CreditCardInformation: ");
 		printout.append("Number: ");
 		printout.append(receipt.getCreditCard().getNumber());
+		printout.append("\n");
+		printout.append("Date: ");
+		printout.append(receipt.getDate().getday()+"/"+receipt.getDate().getMonth());
 		return printout.toString();
 	}
+	
+	/**
+	 * Constructs a formulated result list that can be neatly printed out.
+	 * @param results
+	 * @return a formulated string that contains the different results
+	 */
 	
 	private String formulatedPrintoutForResults(Results results)
 	{
 		StringBuilder printout = new StringBuilder();
+		goesThroughCheckList(printout, results);
+		return printout.toString();
+	}
+	
+	private void goesThroughCheckList(StringBuilder printout, Results results)
+	{
 		for (int i=0; i<results.getResults().length;i++)
 		{
-			if (results.getResultByNumber(i))
-			{
-				printout.append("Inspection item number " +i+" was approved");
-			}
-			else
-			{
-				printout.append("Inspection number "+i+" was unapproved");
-			}
-				
-			printout.append("\n");
+			translateResult(printout, i, results);
 		}
-		return printout.toString();
+	}
+	
+	private void translateResult(StringBuilder printout, int counter, Results results)
+	{
+		if (results.getResultByNumber(counter))
+		{
+			printout.append("Inspection item number " +counter+" was approved");
+		}
+		else
+		{
+			printout.append("Inspection number "+counter+" was unapproved");
+		}
+			
+		printout.append("\n");
 	}
 
 }

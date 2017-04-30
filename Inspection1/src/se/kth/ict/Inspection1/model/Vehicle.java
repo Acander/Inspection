@@ -7,5 +7,10 @@ public class Vehicle {
 	{
 		this.regNum = regNum;
 	}
+	
+	public String getRegNum()
+	{
+		return regNum;
+	}
 
 }

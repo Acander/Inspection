@@ -63,6 +63,13 @@ public class SystemHandler {
 		printer.printReceipt(receipt);
 	}
 	
+	/**
+	 * This method handles access to the external payment authorization system
+	 * @param creditCard
+	 * @param costForInspection
+	 * @return boolean variable (true or false) describing if payment authorized
+	 */
+	
 	public boolean payByCard(CreditCard creditCard, double costForInspection)
 	{
 		PaymentAuthorization paymentAuthorization = new PaymentAuthorization();

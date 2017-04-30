@@ -24,4 +24,14 @@ public class Inspection {
 		this.vehicle = vehicle;
 		this.checkList = checkList;
 	}
+	
+	public String getRegNum()
+	{
+		return vehicle.getRegNum();
+	}
+	
+	public InspectionCheckList getInspectionCheckList()
+	{
+		return checkList;
+	}
 }

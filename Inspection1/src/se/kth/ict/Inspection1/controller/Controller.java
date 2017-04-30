@@ -8,6 +8,7 @@ import se.kth.ict.Inspection1.model.Vehicle;
 import se.kth.ict.Inspection1.model.CashPayment;
 import se.kth.ict.Inspection1.model.Receipt;
 import se.kth.ict.Inspection1.integration.CreditCard;
+import se.kth.ict.Inspection1.model.Results;
 
 /**
  * There is only one real Controller in the program.
@@ -21,6 +22,7 @@ public class Controller {
 	private SystemHandler systemHandler;
 	public Inspection specifiedInspectionToBeMade;
 	public Amount costForInspection;
+	public Results inspectionResults;
 	
 	public Controller()
 	{
@@ -73,6 +75,8 @@ public class Controller {
 	
 	/**
 	 * This method is used in the event of a credit card payment. 
+	 * It uses the credit card information to aquire a payment authorization 
+	 * and if this is approved it instructs the system to print the receipt
 	*/
 	public void enterCreditCardInforMation(CreditCard creditCard)
 	{
@@ -83,6 +87,17 @@ public class Controller {
 			systemHandler.timeToPrintReceipt(receipt);
 			
 		}
+	}
+	
+	public InspectionCheckList specifyWhatToInspect()
+	{
+		inspectionResults = new Results(specifiedInspectionToBeMade.getInspectionCheckList());
+		return specifiedInspectionToBeMade.getInspectionCheckList();
+	}
+	
+	public void enterResult(boolean result)
+	{
+		
 	}
 	
 }

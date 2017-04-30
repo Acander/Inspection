@@ -1,6 +1,7 @@
 package se.kth.ict.Inspection1.integration;
 
 import se.kth.ict.Inspection1.model.Receipt;
+import se.kth.ict.Inspection1.model.Results;
 
 public class Printer {
 	
@@ -17,7 +18,12 @@ public class Printer {
 	
 	public void printReceipt(Receipt receipt)
 	{
-		System.out.println(formulatedPrintout(receipt));
+		System.out.println(formulatedPrintoutForReceipt(receipt));
+	}
+	
+	public void printResults(Results results)
+	{
+		System.out.println(formulatedPrintoutForResults(results));
 	}
 	
 	/**
@@ -28,7 +34,7 @@ public class Printer {
 	 * @return a formulated receipt ready for printout
 	 */
 	
-	private String formulatedPrintout(Receipt receipt)
+	private String formulatedPrintoutForReceipt(Receipt receipt)
 	{
 		StringBuilder printout = new StringBuilder();
 		printout.append("The cost for the inspection is: ");
@@ -46,6 +52,23 @@ public class Printer {
 		return printout.toString();
 	}
 	
-	
+	private String formulatedPrintoutForResults(Results results)
+	{
+		StringBuilder printout = new StringBuilder();
+		for (int i=0; i<results.getResults().length;i++)
+		{
+			if (results.getResultByNumber(i))
+			{
+				printout.append("Inspection item number " +i+" was approved");
+			}
+			else
+			{
+				printout.append("Inspection number "+i+" was unapproved");
+			}
+				
+			printout.append("\n");
+		}
+		return printout.toString();
+	}
 
 }

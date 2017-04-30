@@ -97,7 +97,12 @@ public class Controller {
 	
 	public void enterResult(boolean result)
 	{
-		
+		inspectionResults.storeResult(result);
+	}
+	
+	public void printResults(Results results)
+	{
+		systemHandler.timeToPrintResults(results);
 	}
 	
 }

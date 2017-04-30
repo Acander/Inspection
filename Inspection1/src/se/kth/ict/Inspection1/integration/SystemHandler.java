@@ -1,6 +1,8 @@
 package se.kth.ict.Inspection1.integration;
 
 import se.kth.ict.Inspection1.model.Receipt;
+import se.kth.ict.Inspection1.model.Results;
+import se.kth.ict.Inspection1.integration.Printer;
 
 public class SystemHandler {
 	private Garage garage;
@@ -61,6 +63,11 @@ public class SystemHandler {
 	public void timeToPrintReceipt(Receipt receipt)
 	{
 		printer.printReceipt(receipt);
+	}
+	
+	public void timeToPrintResults(Results results)
+	{
+		printer.printResults(results);
 	}
 	
 	/**

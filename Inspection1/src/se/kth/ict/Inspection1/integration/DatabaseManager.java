@@ -8,20 +8,21 @@ package se.kth.ict.Inspection1.integration;
  */
 
 class DatabaseManager {
-	private InspectionCheckList checkList;
+	private InspectionCheckList checkList = new InspectionCheckList();
 	
 	/**
 	 * Creates a DatabaseManger
 	 */
 	
-	public DatabaseManager()
-	{
-		
-	}
+	public DatabaseManager(){}
 	
+	/**
+	 * Basically a getMethod
+	 * @return and object InspectionCheckList
+	 */
 	public InspectionCheckList findInspections()
 	{
-		return new InspectionCheckList();
+		return checkList;
 	}
 
 }

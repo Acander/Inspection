@@ -28,15 +28,23 @@ public class View {
 	{
 		controller.specifyThatAnewInspectionIsAboutToTakePlace(2, 5);
 		controller.closeGarageDoor();
-		controller.enterRegNumberToProduceCostAndInspectionList("MGD545");
+		double cost = controller.enterRegNumberToProduceCostAndInspectionList("MGD545");
+		System.out.print("Receipt 1: (Cash)\n");
 		double change = controller.registerAmountOfCashPaid(3000);
-		System.out.println(change);
+		System.out.println();
+		System.out.print("Receipt 2: (Creditcard)\n");
 		controller.enterCreditCardInforMation(new CreditCard(3456, "62783945473", "this", new Date(2, 17), 871));
 		
+		System.out.println();
 		InspectionCheckList checkList = controller.specifyWhatToInspect();
+		System.out.println("Inspection Checklist:");
+		System.out.println(checkList.toString());
+		
 		controller.enterResult(true);
 		controller.enterResult(false);
 		controller.enterResult(false);
+		System.out.println("Results:");
+		controller.printResults(controller.getResults());
 		
 		controller.openGarageDoor();
 		controller.closeGarageDoor();

@@ -8,11 +8,11 @@ package se.kth.ict.Inspection1.integration;
  */
 
 public class CreditCard {
-	private int pin;
-	private String number;
-	private String holder;
-	private Date date;
-	private int cVC;
+	private int pin = 0;
+	private String number = null;
+	private String holder = null;
+	private Date date = null;
+	private int cVC = 0;
 	
 	public CreditCard(int pin, String number, String holder, Date date, int cVC)
 	{

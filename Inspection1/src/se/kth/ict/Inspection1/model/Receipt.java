@@ -14,7 +14,7 @@ import se.kth.ict.Inspection1.integration.CreditCard;
 public class Receipt {
 	private double amountPaid;
 	private double inspectionCost;
-	private double change;
+	private double change = 0;
 	private Date date;
 	private CreditCard creditCard;
 	

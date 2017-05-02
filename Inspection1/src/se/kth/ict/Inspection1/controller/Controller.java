@@ -129,6 +129,11 @@ public class Controller {
 		inspectionResults.storeResult(result);
 	}
 	
+	public Results getResults()
+	{
+		return inspectionResults;
+	}
+	
 	/**
 	 * Instructs the system handler to print out the now filled result list
 	 * @param results
@@ -138,5 +143,7 @@ public class Controller {
 	{
 		systemHandler.timeToPrintResults(results);
 	}
+	
+	
 	
 }

@@ -28,7 +28,6 @@ public class Printer {
 	
 	public void printResults(Results results)
 	{
-		System.out.println(results.getInspectionCheckList().toString());
 		System.out.println(formulatedPrintoutForResults(results));
 	}
 	
@@ -51,10 +50,6 @@ public class Printer {
 		printout.append("\n");
 		printout.append("The total change is: ");
 		printout.append(receipt.getChange());
-		printout.append("\n");
-		printout.append("CreditCardInformation: ");
-		printout.append("Number: ");
-		printout.append(receipt.getCreditCard().getNumber());
 		printout.append("\n");
 		printout.append("Date: ");
 		printout.append(receipt.getDate().getday()+"/"+receipt.getDate().getMonth());

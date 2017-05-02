@@ -20,6 +20,7 @@ public class CashPayment {
 
 	private double calculateChange()
 	{
-		return (cost-amountPaid);
+		double change = amountPaid-cost;
+		return change;
 	}
 }

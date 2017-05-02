@@ -22,11 +22,13 @@ public class Printer {
 	}
 	
 	/**
-	 * Prints out the results to the console.
+	 * Prints out the results to the console and the check list
+	 * @param results
 	 */
 	
 	public void printResults(Results results)
 	{
+		System.out.println(results.getInspectionCheckList().toString());
 		System.out.println(formulatedPrintoutForResults(results));
 	}
 	

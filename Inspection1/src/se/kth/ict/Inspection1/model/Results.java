@@ -4,19 +4,19 @@ import se.kth.ict.Inspection1.integration.InspectionCheckList;
 
 public class Results {
 	private InspectionCheckList checkList;
-	private boolean[] results;
+	private boolean[] results = new boolean[3];
 	private int count = 0;
 	private static final int limit = 3;
 	
 	/**
-	 * Creates an array representing an array of results from the inspection
+	 * Creates an array representing an array of results (three things here) from the inspection with a and inspectionCheckList
+	 * (not used in this perticular implementation) 
 	 * @param checkList
 	 */
 	
 	public Results(InspectionCheckList checkList)
 	{
 		this.checkList = checkList;
-		results = new boolean[3];
 	}
 
 	/**
@@ -27,9 +27,10 @@ public class Results {
 	
 	public void storeResult(boolean result)
 	{
-		if(counter() < limit)
+		if(count < limit)
 		{
 			results[count] = result;
+			counter();
 		}
 	}
 	
@@ -53,5 +54,10 @@ public class Results {
 	public boolean getResultByNumber(int arrayNumber)
 	{
 		return results[arrayNumber];
+	}
+	
+	public InspectionCheckList getInspectionCheckList()
+	{
+		return checkList;
 	}
 }

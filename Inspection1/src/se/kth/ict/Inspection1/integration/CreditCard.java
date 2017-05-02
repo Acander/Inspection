@@ -14,7 +14,7 @@ public class CreditCard {
 	private Date date;
 	private int cVC;
 	
-	public CreditCard(int pin, String number, String holder, Date date, int CVC)
+	public CreditCard(int pin, String number, String holder, Date date, int cVC)
 	{
 		this.pin = pin;
 		this.number = number;
@@ -38,7 +38,7 @@ public class CreditCard {
 		return holder;
 	}
 	
-	public Date date()
+	public Date getDate()
 	{
 		return date;
 	}

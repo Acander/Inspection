@@ -32,5 +32,6 @@ class Garage {
 	{
 		doorOpen = false;
 	}
+	
 
 }

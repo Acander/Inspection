@@ -75,7 +75,7 @@ public class SystemHandler {
 	}
 	
 	/**
-	 * Orders the printer to print out the results from the exception
+	 * Orders the printer to print out the results from the inspection (with the inspection CheckList)
 	 * @param results
 	 */
 	

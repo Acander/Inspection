@@ -10,6 +10,7 @@ public class CashPayment {
 	public CashPayment(double cost, double amountPaid)
 	{
 		this.cost = cost;
+		this.amountPaid = amountPaid;
 	}
 	
 	

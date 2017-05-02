@@ -21,17 +21,17 @@ import se.kth.ict.Inspection1.integration.Date;
 
 public class Controller {
 	private SystemHandler systemHandler;
-	public Inspection specifiedInspectionToBeMade;
-	public Amount costForInspection;
-	public Results inspectionResults;
+	private Inspection specifiedInspectionToBeMade;
+	private Amount costForInspection;
+	private Results inspectionResults;
 	
 	/**
-	 * Creates a Controller unit with an associated system handler for the inrtegration layer.
+	 * Creates a Controller unit with an associated system handler for the integration layer.
 	 */
 	
-	public Controller()
+	public Controller(SystemHandler systemHandler)
 	{
-		systemHandler = new SystemHandler();
+		this.systemHandler = systemHandler;
 	}
 	
 	/**

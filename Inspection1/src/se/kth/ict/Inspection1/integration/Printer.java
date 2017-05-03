@@ -71,7 +71,7 @@ public class Printer {
 	
 	private void goesThroughCheckList(StringBuilder printout, Results results)
 	{
-		for (int i=0; i<results.getResults().length;i++)
+		for (int i=1; i<=results.getResults().length;i++)
 		{
 			translateResult(printout, i, results);
 		}
@@ -79,7 +79,7 @@ public class Printer {
 	
 	private void translateResult(StringBuilder printout, int counter, Results results)
 	{
-		if (results.getResultByNumber(counter))
+		if (results.getResultByNumber(counter-1))
 		{
 			printout.append("Inspection item number " +counter+" was approved");
 		}

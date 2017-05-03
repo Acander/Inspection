@@ -44,8 +44,8 @@ public class PrinterTest {
 		results.storeResult(true);
 		
 		printer.printResults(results);
-		String expResult = "Inspection item number 0 was approved\n"
-				+ "Inspection number 1 was unapproved\n"+"Inspection item number 2 was approved\n";
+		String expResult = "Inspection item number 1 was approved\n"
+				+ "Inspection number 2 was unapproved\n"+"Inspection item number 3 was approved\n";
 		String result = outContent.toString();
 		assertTrue("Wrong printout.", result.contains(expResult));
 	}
@@ -59,7 +59,7 @@ public class PrinterTest {
 		Receipt receipt = new Receipt(1200, 1200, creditCard, date);
 		printer.printReceipt(receipt);
 		String expResult = "The cost for the inspection is: 1200\nThe amount paid: 1200\nThe total change is: 0\n"
-				+"CreditCardInformation: \nNumber: uefhreui\nDate: 2/5";
+				+"Date: 2/5";
 		String result = outContent.toString();
 		assertTrue("Wrong printout.", result.contains(expResult));
 	}

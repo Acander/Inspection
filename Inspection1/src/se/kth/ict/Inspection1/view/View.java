@@ -47,7 +47,7 @@ public class View {
 		System.out.println("*Registration number is entered and cost is calculated.");
 		double cost = 0;
 		try{
-		cost = controller.enterRegNumberToProduceCostAndInspectionList("MGD525", logHandler);
+		cost = controller.enterRegNumberToProduceCostAndInspectionList("MGD545", logHandler);
 		}catch(OperationFailedException operationError)
 		{
 			logHandler.logException(operationError);

@@ -125,9 +125,8 @@ public class Controller {
 	}
 	
 	/**
-	 * Method that creates a result list and also returns and 
-	 * returns a previously created inspection checklist.
-	 * @return
+	 * Method that creates a result list and also returns 
+	 * @return returns a previously created inspection checklist.
 	 */
 	
 	public InspectionCheckList specifyWhatToInspect()
@@ -137,7 +136,7 @@ public class Controller {
 	}
 	
 	/**
-	 * enterResutl is used for entering a specifc result from the inspection
+	 * enterResutl is used for entering a specific result from the inspection
 	 * @param result
 	 */
 	

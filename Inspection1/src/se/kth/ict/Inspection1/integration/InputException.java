@@ -1,4 +1,4 @@
-package se.kth.ictInspection1.exceptions;
+package se.kth.ict.Inspection1.integration;
 
 public class InputException extends Exception
 {

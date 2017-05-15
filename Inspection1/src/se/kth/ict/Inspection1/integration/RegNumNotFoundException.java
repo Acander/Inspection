@@ -1,4 +1,4 @@
-package se.kth.ictInspection1.exceptions;
+package se.kth.ict.Inspection1.integration;
 
 import se.kth.ict.Inspection1.model.Vehicle;
 

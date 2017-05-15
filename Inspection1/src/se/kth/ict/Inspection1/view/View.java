@@ -1,13 +1,15 @@
 package se.kth.ict.Inspection1.view;
 
+import java.io.IOException;
+
+import se.kth.ict.Inspection1.LogHandler.se.LogHandler;
 import se.kth.ict.Inspection1.controller.Controller;
+import se.kth.ict.Inspection1.controller.OperationFailedException;
 import se.kth.ict.Inspection1.integration.CreditCard;
 import se.kth.ict.Inspection1.integration.Date;
+import se.kth.ict.Inspection1.integration.InputException;
 import se.kth.ict.Inspection1.integration.InspectionCheckList;
-import se.kth.ictInspection1.exceptions.InputException;
-import se.kth.ictInspection1.exceptions.OperationFailedException;
-import se.kth.ictInspection1.exceptions.RegNumNotFoundException;
-import se.kth.ictInspection1.exceptions.ErrorMessageHandler;
+import se.kth.ict.Inspection1.integration.RegNumNotFoundException;
 /**
  * This is simply an hardcoded view, which represents 
  * the users interface of the system
@@ -18,16 +20,19 @@ import se.kth.ictInspection1.exceptions.ErrorMessageHandler;
 public class View {
 	private Controller controller;
 	private ErrorMessageHandler errorMessageHandler;
+	private LogHandler logHandler;
 	
 	/**
 	 * Creates a new instance
 	 * @param controller The controller that is to be used
+	 * @throws IOException In case of log
 	 */
 	
-	public View(Controller controller)
+	public View(Controller controller) throws IOException
 	{
 		this.controller = controller;
 		this.errorMessageHandler = new ErrorMessageHandler();
+		this.logHandler = new LogHandler();
 	}
 	
 	public void sampleExecution() throws RegNumNotFoundException, InputException, OperationFailedException
@@ -42,10 +47,11 @@ public class View {
 		System.out.println("*Registration number is entered and cost is calculated.");
 		double cost = 0;
 		try{
-		cost = controller.enterRegNumberToProduceCostAndInspectionList("MGD545");
-		}catch(OperationFailedException controllerError)
+		cost = controller.enterRegNumberToProduceCostAndInspectionList("MGD525", logHandler);
+		}catch(OperationFailedException operationError)
 		{
-			errorMessageHandler.showErrorMsg(controllerError.getMessage()+", please try again");
+			logHandler.logException(operationError);
+			errorMessageHandler.showErrorMsg(operationError.getMessage()+", please try again");
 			System.exit(1);
 		}
 		

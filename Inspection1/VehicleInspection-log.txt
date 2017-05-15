@@ -1,0 +1,24 @@
+27/5, an exception was thrown, The vehicle with registration number MGD525 is not to be inspected
+se.kth.ict.Inspection1.integration.RegNumNotFoundException: The vehicle with registration number MGD525 is not to be inspected
+	at se.kth.ict.Inspection1.integration.DatabaseManager.isValidRegNum(DatabaseManager.java:37)
+	at se.kth.ict.Inspection1.integration.DatabaseManager.findInspections(DatabaseManager.java:29)
+	at se.kth.ict.Inspection1.integration.SystemHandler.checkInput(SystemHandler.java:76)
+	at se.kth.ict.Inspection1.integration.SystemHandler.produceInspectionList(SystemHandler.java:70)
+	at se.kth.ict.Inspection1.controller.Controller.enterRegNum(Controller.java:87)
+	at se.kth.ict.Inspection1.controller.Controller.enterRegNumberToProduceCostAndInspectionList(Controller.java:77)
+	at se.kth.ict.Inspection1.view.View.sampleExecution(View.java:50)
+	at se.kth.ict.Inspection1.startup.Main.main(Main.java:20)
+27/5, an exception was thrown, Incorrect input
+se.kth.ict.Inspection1.integration.InputException: Incorrect input
+	at se.kth.ict.Inspection1.integration.SystemHandler.checkInput(SystemHandler.java:81)
+	at se.kth.ict.Inspection1.integration.SystemHandler.produceInspectionList(SystemHandler.java:70)
+	at se.kth.ict.Inspection1.controller.Controller.enterRegNum(Controller.java:87)
+	at se.kth.ict.Inspection1.controller.Controller.enterRegNumberToProduceCostAndInspectionList(Controller.java:77)
+	at se.kth.ict.Inspection1.view.View.sampleExecution(View.java:50)
+	at se.kth.ict.Inspection1.startup.Main.main(Main.java:20)
+27/5, an exception was thrown, System operation has failed
+se.kth.ict.Inspection1.controller.OperationFailedException: System operation has failed
+	at se.kth.ict.Inspection1.controller.Controller.enterRegNum(Controller.java:91)
+	at se.kth.ict.Inspection1.controller.Controller.enterRegNumberToProduceCostAndInspectionList(Controller.java:77)
+	at se.kth.ict.Inspection1.view.View.sampleExecution(View.java:50)
+	at se.kth.ict.Inspection1.startup.Main.main(Main.java:20)

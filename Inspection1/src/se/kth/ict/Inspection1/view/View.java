@@ -4,6 +4,9 @@ import se.kth.ict.Inspection1.controller.Controller;
 import se.kth.ict.Inspection1.integration.CreditCard;
 import se.kth.ict.Inspection1.integration.Date;
 import se.kth.ict.Inspection1.integration.InspectionCheckList;
+import se.kth.ictInspection1.exceptions.InputException;
+import se.kth.ictInspection1.exceptions.OperationFailedException;
+import se.kth.ictInspection1.exceptions.RegNumNotFoundException;
 /**
  * This is simply an hardcoded view, which represents 
  * the users interface of the system
@@ -24,7 +27,7 @@ public class View {
 		this.controller = controller;
 	}
 	
-	public void sampleExecution()
+	public void sampleExecution() throws RegNumNotFoundException, InputException, OperationFailedException
 	{
 		System.out.println("*Display que number and opening garage door.");
 		controller.specifyThatAnewInspectionIsAboutToTakePlace(2, 5);

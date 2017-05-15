@@ -5,6 +5,9 @@ import se.kth.ict.Inspection1.integration.InspectionCheckList;
 import se.kth.ict.Inspection1.model.Amount;
 import se.kth.ict.Inspection1.model.Inspection;
 import se.kth.ict.Inspection1.model.Vehicle;
+import se.kth.ictInspection1.exceptions.InputException;
+import se.kth.ictInspection1.exceptions.OperationFailedException;
+import se.kth.ictInspection1.exceptions.RegNumNotFoundException;
 import se.kth.ict.Inspection1.model.CashPayment;
 import se.kth.ict.Inspection1.model.Receipt;
 import se.kth.ict.Inspection1.integration.CreditCard;
@@ -65,15 +68,28 @@ public class Controller {
 	 * 
 	 * @param registrationNumber
 	 * @return the cost for the inspection 
+	 * @throws RegNumNotFoundException 
 	 */
 	
-	public double enterRegNumberToProduceCostAndInspectionList(String regNum)
+	public double enterRegNumberToProduceCostAndInspectionList(String regNum) throws OperationFailedException, InputException, RegNumNotFoundException
 	{
 		Vehicle vehicleToInspect = new Vehicle(regNum);
-		InspectionCheckList whatToInspectOnVehicle = systemHandler.produceInspectionList();
+		InspectionCheckList whatToInspectOnVehicle = enterRegNum(vehicleToInspect);
 		specifiedInspectionToBeMade = new Inspection(vehicleToInspect, whatToInspectOnVehicle);
 		costForInspection = new Amount();
 		return costForInspection.getCost();
+	}
+	
+	private InspectionCheckList enterRegNum(Vehicle vehicleToInspect) throws InputException, OperationFailedException, RegNumNotFoundException
+	{
+		InspectionCheckList whatToInspectOnVehicle = null;
+		try{
+			whatToInspectOnVehicle = systemHandler.produceInspectionList(vehicleToInspect);
+			} catch(InputException IntegrationLayer)
+			{
+				throw new OperationFailedException();
+			}
+		return whatToInspectOnVehicle;
 	}
 	
 	/**

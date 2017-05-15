@@ -1,6 +1,9 @@
 package se.kth.ict.Inspection1.integration;
 
 import se.kth.ict.Inspection1.model.Receipt;
+import se.kth.ictInspection1.exceptions.InputException;
+import se.kth.ict.Inspection1.model.Vehicle;
+import se.kth.ictInspection1.exceptions.RegNumNotFoundException;
 import se.kth.ict.Inspection1.model.Results;
 import se.kth.ict.Inspection1.integration.Printer;
 
@@ -58,10 +61,23 @@ public class SystemHandler {
 /**
  * Produces a checkList for the inspection
  * @return an object of the type InspectionCheckList 
+ * @throws RegNumNotFoundException, InputException
  */
-	public InspectionCheckList produceInspectionList()
+	
+	public InspectionCheckList produceInspectionList(Vehicle vehicleToInspect) throws RegNumNotFoundException, InputException
 	{
-		return databaseManager.findInspections();
+		return checkInput(vehicleToInspect);
+	}
+	
+	private InspectionCheckList checkInput(Vehicle vehicleToInspect) throws RegNumNotFoundException, InputException
+	{
+		try {
+			return databaseManager.findInspections(vehicleToInspect);
+			} 
+			catch(RegNumNotFoundException dataBaseException)
+			{
+				throw new InputException();
+			}
 	}
 	
 	/**

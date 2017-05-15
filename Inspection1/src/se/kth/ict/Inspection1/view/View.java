@@ -7,6 +7,7 @@ import se.kth.ict.Inspection1.integration.InspectionCheckList;
 import se.kth.ictInspection1.exceptions.InputException;
 import se.kth.ictInspection1.exceptions.OperationFailedException;
 import se.kth.ictInspection1.exceptions.RegNumNotFoundException;
+import se.kth.ictInspection1.exceptions.ErrorMessageHandler;
 /**
  * This is simply an hardcoded view, which represents 
  * the users interface of the system
@@ -16,6 +17,7 @@ import se.kth.ictInspection1.exceptions.RegNumNotFoundException;
 
 public class View {
 	private Controller controller;
+	private ErrorMessageHandler errorMessageHandler;
 	
 	/**
 	 * Creates a new instance
@@ -25,6 +27,7 @@ public class View {
 	public View(Controller controller)
 	{
 		this.controller = controller;
+		this.errorMessageHandler = new ErrorMessageHandler();
 	}
 	
 	public void sampleExecution() throws RegNumNotFoundException, InputException, OperationFailedException
@@ -37,7 +40,15 @@ public class View {
 		System.out.println();
 		
 		System.out.println("*Registration number is entered and cost is calculated.");
-		double cost = controller.enterRegNumberToProduceCostAndInspectionList("MGD545");
+		double cost = 0;
+		try{
+		cost = controller.enterRegNumberToProduceCostAndInspectionList("MGD545");
+		}catch(OperationFailedException controllerError)
+		{
+			errorMessageHandler.showErrorMsg(controllerError.getMessage()+", please try again");
+			System.exit(1);
+		}
+		
 		System.out.println("Inspectior sais: Cost for the inspection is "+cost+ "kr.");
 		System.out.println();
 		

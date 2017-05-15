@@ -7,4 +7,8 @@ public class OperationFailedException extends Exception
 		super("System operation has failed");
 	}
 	
+	public String getMessage()
+	{
+		return "System operation has failed";
+	}
 }

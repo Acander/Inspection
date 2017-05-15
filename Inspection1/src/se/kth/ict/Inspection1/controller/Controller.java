@@ -68,7 +68,7 @@ public class Controller {
 	 * 
 	 * @param registrationNumber
 	 * @return the cost for the inspection 
-	 * @throws RegNumNotFoundException 
+	 * @throws OperationFailedException if some exception is thrown after entered registration number
 	 */
 	
 	public double enterRegNumberToProduceCostAndInspectionList(String regNum) throws OperationFailedException, InputException, RegNumNotFoundException

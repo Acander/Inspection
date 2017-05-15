@@ -61,7 +61,7 @@ public class SystemHandler {
 /**
  * Produces a checkList for the inspection
  * @return an object of the type InspectionCheckList 
- * @throws RegNumNotFoundException, InputException
+ * @throws InputException if the database Manager throws a RegNumException
  */
 	
 	public InspectionCheckList produceInspectionList(Vehicle vehicleToInspect) throws RegNumNotFoundException, InputException

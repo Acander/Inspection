@@ -20,6 +20,11 @@ public class Date {
 		this.month = month;
 	}
 	
+	/**
+	 * Creates today's date
+	 */
+	public Date(){}
+	
 	public int getday()
 	{
 		return day;
@@ -28,6 +33,11 @@ public class Date {
 	public int getMonth()
 	{
 		return month;
+	}
+	
+	public String toString()
+	{
+		return day+"/"+month;
 	}
 
 }

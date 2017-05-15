@@ -22,6 +22,7 @@ class DatabaseManager {
 	/**
 	 * Basically a getMethod
 	 * @return and object InspectionCheckList
+	 * throws RegNumNotFoundException if the inputed registration number does not match the database data
 	 */
 	public InspectionCheckList findInspections(Vehicle vehicleToInspect) throws RegNumNotFoundException
 	{

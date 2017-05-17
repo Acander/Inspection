@@ -8,11 +8,16 @@ import se.kth.ict.Inspection1.model.Inspection;
 import se.kth.ict.Inspection1.model.Vehicle;
 import se.kth.ict.Inspection1.model.CashPayment;
 import se.kth.ict.Inspection1.model.Receipt;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import se.kth.ict.Inspection1.LogHandler.se.LogHandler;
 import se.kth.ict.Inspection1.integration.CreditCard;
 import se.kth.ict.Inspection1.model.Results;
 import se.kth.ict.Inspection1.integration.Date;
 import se.kth.ict.Inspection1.integration.InputException;
+import se.kth.ict.Inspection1.model.ResultsObserver;
 
 /**
  * There is only one real Controller in the program.
@@ -27,6 +32,7 @@ public class Controller {
 	private Inspection specifiedInspectionToBeMade;
 	private Amount costForInspection;
 	private Results inspectionResults;
+	private List<ResultsObserver> resultsObservers = new ArrayList<>();
 	
 	/**
 	 * Creates a Controller unit with an associated system handler for the integration layer.
@@ -39,11 +45,24 @@ public class Controller {
 	
 	/**
 	 * Informs the system handler that an inspection is about to take place
+	 * @param day
+	 * @param month
 	 */
 	
 	public void specifyThatAnewInspectionIsAboutToTakePlace(int day, int month)
 	{
 		systemHandler.inviteCustomer(day, month);
+	}
+	
+	/**
+	 * The customer that is registered as an observer with this method will be 
+	 * able to observe that results for the different inspections made during the inspection
+	 * @param obs
+	 */
+	
+	public void addResultsObserver(ResultsObserver obs)
+	{
+		resultsObservers.add(obs);
 	}
 
 	/**
@@ -125,13 +144,14 @@ public class Controller {
 	}
 	
 	/**
-	 * Method that creates a result list and also returns 
+	 * Method that creates a result list and also adds every observer to the observing class
 	 * @return returns a previously created inspection checklist.
 	 */
 	
 	public InspectionCheckList specifyWhatToInspect()
 	{
 		inspectionResults = new Results(specifiedInspectionToBeMade.getInspectionCheckList());
+		inspectionResults.addObserver(resultsObservers);
 		return specifiedInspectionToBeMade.getInspectionCheckList();
 	}
 	

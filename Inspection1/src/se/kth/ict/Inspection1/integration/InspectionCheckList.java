@@ -15,6 +15,5 @@ public class InspectionCheckList {
 		outPutForPrintout.append("3. windowsChecked\n");
 		return outPutForPrintout.toString();
 	}
-	
 
 }

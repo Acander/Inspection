@@ -31,6 +31,7 @@ public class View {
 	public View(Controller controller) throws IOException
 	{
 		this.controller = controller;
+		this.controller.addResultsObserver(new InspectionStatView());
 		this.errorMessageHandler = new ErrorMessageHandler();
 		this.logHandler = new LogHandler();
 	}

@@ -10,11 +10,11 @@ public class Results {
 	private boolean[] results = new boolean[3];
 	private int count = 0;
 	private static final int limit = 3;
-	private List<ResultsObserver> resultsObservers = new ArrayList<>();
+	private List<ResultsObserver> resultsObserversList = new ArrayList<>();
 	
 	/**
 	 * Creates an array representing an array of results (three things here) from the inspection with a and inspectionCheckList
-	 * (not used in this perticular implementation) 
+	 * (not used in this particular implementation) 
 	 * @param checkList
 	 */
 	
@@ -41,13 +41,17 @@ public class Results {
 	
 	private void notifyObservers(boolean result)
 	{
-		for(ResultsObserver obs: resultsObservers)
+		for(ResultsObserver obs: resultsObserversList)
 			obs.newResult(result);
 	}
 	
-	public void addObserver(ResultsObserver obs)
+	/**
+	 * Adds observers
+	 * @param resultsObservers
+	 */
+	public void addObserver(List<ResultsObserver> resultsObservers)
 	{
-		resultsObservers.add(obs);
+		resultsObserversList.addAll(resultsObservers);
 	}
 	
 	/**
